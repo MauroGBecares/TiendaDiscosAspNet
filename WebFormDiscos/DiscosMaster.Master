@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DiscosMaster.master.cs" Inherits="WebFormDiscos.DiscosMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/estilos.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js" defer></script>
+    <script src="Scripts/scriptsDiscos.js" defer></script>
+    <title>Tienda Discos</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Sounds Times</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="Inicio.aspx">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Discos.aspx">Discos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ListaDiscos.aspx">Lista de Discos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer class="my-2 mx-2">
+                <hr />
+                Hecho por Mauro Bécares
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
