@@ -12,9 +12,10 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="form-check">
+                <div class="form-check d-flex gap-2">
                     <asp:CheckBox runat="server" ID="chkFiltroAvanzado" AutoPostBack="true" OnCheckedChanged="chkFiltroAvanzado_CheckedChanged"/>
                     <asp:Label ID="lblFiltroAvanzado" CssClass="form-check-label" runat="server" Text="Activar Filtro Avanzado"></asp:Label>
+                    <asp:Button ID="btnLimpiarFiltro" runat="server" Text="Limpiar Filtro" CssClass="btn btn-outline-primary ms-auto" OnClick="btnLimpiarFiltro_Click" />
                 </div>
             </div>
         </div>

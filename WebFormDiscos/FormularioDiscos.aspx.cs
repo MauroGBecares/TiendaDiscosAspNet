@@ -14,6 +14,12 @@ namespace WebFormDiscos
         public bool ConfirmarEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "Usted debe ser administrador para acceder a esta página");
+                Response.Redirect("Error.aspx");
+            }
+               
             txtId.Enabled = false;
             ConfirmarEliminacion = false;
             try
@@ -62,6 +68,10 @@ namespace WebFormDiscos
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
             try
             {
                 Dominio.Discos disco = new Dominio.Discos();
@@ -92,8 +102,8 @@ namespace WebFormDiscos
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -121,8 +131,8 @@ namespace WebFormDiscos
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

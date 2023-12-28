@@ -15,22 +15,27 @@
                 <div class="mb-3">
                     <label for="txtTitulo" class="form-label">Nombre: </label>
                     <asp:TextBox runat="server" ID="txtTitulo" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ErrorMessage="Debe completar el texto..." ForeColor="Red" Font-Size="Small" ControlToValidate="txtTitulo" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtFecha" class="form-label">Fecha: </label>
                     <asp:TextBox runat="server" TextMode="Date" ID="txtFecha" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ErrorMessage="Debe completar el texto..." ForeColor="Red" Font-Size="Small" ControlToValidate="txtFecha" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtCantCanciones" class="form-label">Cantidad de canciones: </label>
                     <asp:TextBox runat="server" ID="txtCantCanciones" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ErrorMessage="Debe completar el texto..." ForeColor="Red" Font-Size="Small" ControlToValidate="txtCantCanciones" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="ddlEstilo" class="form-label">Estilo:</label>
                     <asp:DropDownList ID="ddlEstilo" CssClass="form-select" runat="server"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ErrorMessage="Debe seleccionar un estilo..." ForeColor="Red" Font-Size="Small" ControlToValidate="ddlEstilo" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="ddlFormato" class="form-label">Formato:</label>
                     <asp:DropDownList ID="ddlFormato" CssClass="form-select" runat="server"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ErrorMessage="Debe seleccionar un formato..." ForeColor="Red" Font-Size="Small" ControlToValidate="ddlFormato" runat="server" />
                 </div>
                 <div class="mb-3">
                     <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
@@ -44,6 +49,7 @@
                             <label for="txtImagenUrl" class="form-label">Url Imagen</label>
                             <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control"
                                 AutoPostBack="true" OnTextChanged="txtImagenUrl_TextChanged" />
+                            <asp:RequiredFieldValidator ErrorMessage="Debe completar el texto..." ForeColor="Red" Font-Size="Small" ControlToValidate="txtImagenUrl" runat="server" />
                         </div>
                         <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
                             runat="server" ID="imgDisco" Width="60%" />
@@ -51,6 +57,8 @@
                 </asp:UpdatePanel>
             </div>
         </div>
+        <%if (Request.QueryString["id"] != null)
+            { %>
         <div class="row">
             <div class="col-6">
                 <asp:UpdatePanel runat="server">
@@ -69,5 +77,6 @@
                 </asp:UpdatePanel>  
             </div>
         </div>
+        <%} %>
     </div>
 </asp:Content>

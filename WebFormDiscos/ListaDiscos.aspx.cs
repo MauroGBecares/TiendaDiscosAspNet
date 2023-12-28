@@ -14,6 +14,11 @@ namespace WebFormDiscos
         public bool esFecha { get; set; }     
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "Usted debe ser administrador para acceder a esta página");
+                Response.Redirect("Error.aspx");
+            }
             try
             {
                 if (ddlCampo.Text == "Fecha de Lanzamiento")
@@ -28,7 +33,8 @@ namespace WebFormDiscos
             }
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -63,7 +69,8 @@ namespace WebFormDiscos
             }
             catch (Exception ex)
             {
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -77,6 +84,12 @@ namespace WebFormDiscos
         {
             if(ddlCampo.Text == "Fecha de Lanzamiento")
                 esFecha = true;
+        }
+
+        protected void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            dgvDiscos.DataSource = Session["listaDiscos"];
+            dgvDiscos.DataBind();
         }
     }
 }

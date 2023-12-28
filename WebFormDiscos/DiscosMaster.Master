@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/estilos.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
     <script src="Scripts/bootstrap.min.js" defer></script>
     <script src="Scripts/scriptsDiscos.js" defer></script>
     <title>Tienda Discos</title>
@@ -35,10 +35,26 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="d-flex">
+                        <%if (!NegocioDatos.Seguridad.sessionActiva(Session["usuario"]))
+                            {  %>
+                        <a href="Login.aspx" class="btn btn-success me-2">Login</a>
+                        <a href="Registro.aspx" class="btn btn-outline-primary m-auto">Registro</a>
+                        <%}
+                            else
+                            { %>
+                        <asp:Button ID="btnSalir" runat="server" CssClass="btn btn-outline-primary" Text="Salir" OnClick="btnSalir_Click" />
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/MiPerfil.aspx">
+                            <asp:Image ID="imgAvatar" runat="server" />
+                        </asp:HyperLink>
+                        <%} %>
+                    </div>
                 </div>
             </nav>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <div class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
             <footer class="my-2 mx-2">
                 <hr />
                 Hecho por Mauro Bécares
